@@ -53,9 +53,9 @@ class Calculator {
             default:
                 return
         }
+        this.previousOperand = ''
         this.currentOperand = result
         this.operation = undefined
-        this.previousOperand = ''
     }
 
     updateDisplay() {
@@ -65,10 +65,16 @@ class Calculator {
                 `${this.previousOperand}  ${this.operation}`
         }
     }
+
+    //ALL CLear
+    clrAll() {
+        this.currentOperandText.innerText = this.currentOperand
+        this.previousOperandText.innerText = this.previousOperand
+    }
 }
 
 
-// selecting all the elements requuired from the Document
+// selecting all the elements required from the Document
 
 const numberButtons = document.querySelectorAll('[data-number]')
 const operationButtons = document.querySelectorAll('[data-operation]')
@@ -102,12 +108,12 @@ operationButtons.forEach(button => {
 
 equalsButton.addEventListener('click', button => {
     calculator.compute()
-    calculator.updateDisplay()
+    calculator.clrAll()
 })
 
 allClearButton.addEventListener('click', button => {
     calculator.clear()
-    calculator.updateDisplay()
+    calculator.clrAll()
 })
 
 deleteButton.addEventListener('click', button => {
